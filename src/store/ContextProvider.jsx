@@ -37,7 +37,7 @@ export const ContextProvider = ({ children }) => {
         const token = urlToken || localToken;
 
         if (!token) {
-            window.location.href = 'http://localhost:5178/login';
+            window.location.href = 'https://journal-management-system-frontend.vercel.app/login';
             return;
         }
 
@@ -66,7 +66,7 @@ export const ContextProvider = ({ children }) => {
             } catch (error) {
                 console.error("Reviewer: Token validation error:", error);
                 localStorage.removeItem('jwtToken');
-                window.location.href = 'http://localhost:5178/login';
+                window.location.href = 'https://journal-management-system-frontend.vercel.app/login';
             }
         };
 
@@ -80,7 +80,7 @@ export const ContextProvider = ({ children }) => {
         const storageListener = (e) => {
             if (e.key === 'logout-event') {
                 localStorage.removeItem('jwtToken');
-                window.location.href = 'http://localhost:5178/login';
+                window.location.href = 'https://journal-management-system-frontend.vercel.app/login';
             }
         };
         window.addEventListener('storage', storageListener);
