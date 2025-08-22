@@ -25,10 +25,15 @@ export const ContextProvider = ({ children }) => {
             console.log('Hello from the Reviewer !');
             return;*/
             
+            console.log("Reviewer logout triggered");
+            console.log("Before remove:", localStorage.getItem("jwtToken"));
             localStorage.removeItem("jwtToken");
-            console.log("Reviewer: Token cleared from localStorage");
-            setTimeout(() => window.close(), 200); // safer close
-            return; // stop execution
+            console.log("After remove:", localStorage.getItem("jwtToken"));
+            setTimeout(() => {
+                console.log("Tab closing attempt");
+                window.close();
+            }, 500);
+            return;
         }
 
         const urlToken = urlParams.get('token');
