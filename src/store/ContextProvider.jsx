@@ -25,14 +25,12 @@ export const ContextProvider = ({ children }) => {
             console.log('Hello from the Reviewer !');
             return;*/
             
-            console.log("Reviewer logout triggered");
-            console.log("Before remove:", localStorage.getItem("jwtToken"));
             localStorage.removeItem("jwtToken");
-            console.log("After remove:", localStorage.getItem("jwtToken"));
-            setTimeout(() => {
-                console.log("Tab closing attempt");
-                window.close();
-            }, 500);
+
+            // 👇 wipe query string so no token can sneak back
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            setTimeout(() => window.close(), 500);
             return;
         }
 
