@@ -20,10 +20,15 @@ export const ContextProvider = ({ children }) => {
         const urlParams = new URLSearchParams(window.location.search);
 
         if (urlParams.get('logout') === 'true') {
-            localStorage.removeItem('jwtToken');
+            /*localStorage.removeItem('jwtToken');
             window.close(); // Close the tab after clearing token
             console.log('Hello from the Reviewer !');
-            return;
+            return;*/
+            
+            localStorage.removeItem("jwtToken");
+            console.log("Reviewer: Token cleared from localStorage");
+            setTimeout(() => window.close(), 200); // safer close
+            return; // stop execution
         }
 
         const urlToken = urlParams.get('token');
